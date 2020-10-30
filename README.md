@@ -1,1 +1,1 @@
-# Trabalho2_Embarcados
+# Trabalho2_Embarcados_Servidor_Central
