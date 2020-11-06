@@ -25,7 +25,7 @@
 # build:
 # 	gcc ./src/main.c  -I ./inc -o ./bin/bin
 run:
-	python3 src/client_tcp.py 
+	python3 src/main.py 
 # clean:
 # 	-rm -f $(OBJDIR)/*.o $(EXE)
 # 	rm -v ./bin/bin
