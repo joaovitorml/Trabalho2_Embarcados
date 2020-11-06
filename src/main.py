@@ -53,7 +53,8 @@ while(1):
     elif opcao == '3':
         s.connect((TCP_IP, TCP_PORT))
         data = s.recv(BUFFER_SIZE)
-        print ('received data:', data)
+        data_real = str(data).split()
+        print(data_real[0][2:], data_real[1][:6])
         break
     elif opcao == '4':
         s.connect((TCP_IP, TCP_PORT))
