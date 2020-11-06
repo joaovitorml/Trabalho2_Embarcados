@@ -22,11 +22,11 @@
 # 	-rm -f $(OBJDIR)/*.o $(EXE)
 
 
-build:
-	gcc ./src/main.c  -I ./inc -o ./bin/bin
+# build:
+# 	gcc ./src/main.c  -I ./inc -o ./bin/bin
 run:
-	./bin/bin /dev/i2c-1
-clean:
-	-rm -f $(OBJDIR)/*.o $(EXE)
-	rm -v ./bin/bin
-	rm -v arquivo.csv
+	python3 src/main.py 
+# clean:
+# 	-rm -f $(OBJDIR)/*.o $(EXE)
+# 	rm -v ./bin/bin
+# 	rm -v arquivo.csv
