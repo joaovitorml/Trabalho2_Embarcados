@@ -29,7 +29,8 @@ while(1):
     print('1- Ligar um dispositivo')
     print('2- Desligar um dispositivo')
     print('3- Checar sensores')
-    print('4- Escolher temperatura')
+    print('4- Checar tempratura e umidade')
+    print('5- Escolher temperatura')
     opcao = input('Escolha uma das opções: ')
 
     s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
@@ -53,10 +54,20 @@ while(1):
     elif opcao == '3':
         s.connect((TCP_IP, TCP_PORT))
         data = s.recv(BUFFER_SIZE)
+        ##s.send(MESSAGE)
+        ##s.send(mensagem)
         data_real = str(data).split()
         print(data_real[0][2:], data_real[1][:6])
         break
     elif opcao == '4':
+        s.connect((TCP_IP, TCP_PORT))
+        data = s.recv(BUFFER_SIZE)
+        #s.send(MESSAGE)
+        #s.send(mensagem)
+        data_real = str(data).split()
+        print(data_real[0][2:], data_real[1][:6])
+        break
+    elif opcao == '5':
         s.connect((TCP_IP, TCP_PORT))
         temp = input('Digite a temperatura desejada: ')
         mensagem = [opcao,temperatura]
