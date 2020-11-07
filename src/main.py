@@ -70,9 +70,11 @@ while(1):
     elif opcao == '5':
         s.connect((TCP_IP, TCP_PORT))
         temp = input('Digite a temperatura desejada: ')
-        mensagem = [opcao,temperatura]
+        mensagem = [opcao,temp]
         s.send(MESSAGE.encode('utf-8'))
-        s.send(mensagem.encode('utf-8'))
+        s.send(mensagem[0].encode('utf-8'))
+        s.send(mensagem[1].encode('utf-8'))
+
         break
     else:
         print('Saindo...')
