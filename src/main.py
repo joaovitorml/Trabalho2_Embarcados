@@ -4,7 +4,7 @@ import socket
 
 TCP_IP = '192.168.0.52'
 TCP_PORT = 5000
-BUFFER_SIZE = 1024
+BUFFER_SIZE = 30
 MESSAGE = "Hello, World!"
 
 def print_dispositivos():
@@ -34,6 +34,14 @@ while(1):
     opcao = input('Escolha uma das opções: ')
 
     s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+    
+    try:
+	s.connect((TCP_IP, TCP_PORT))
+    except:
+	print("erro no connect")
+	s.close()
+	sys.exit(0)
+
 
     if opcao == '1':
         print_dispositivos()
@@ -41,43 +49,35 @@ while(1):
         mensagem = [opcao,escolha]
         s.connect((TCP_IP, TCP_PORT))
         s.sendall(MESSAGE.encode('utf-8'))
-        s.sendall(mensagem.encode('utf-8'))
-        break
+        s.sendall(mensagem[1].encode('utf-8'))
     elif opcao == '2':
         print_dispositivos()
         escolha = input('Escolha um dispositivo: ')
         mensagem = [opcao,escolha]
         s.connect((TCP_IP, TCP_PORT))
         s.send(MESSAGE.encode('utf-8'))
-        s.send(mensagem.encode('utf-8'))
-        break
-    elif opcao == '3':
-        s.connect((TCP_IP, TCP_PORT))
-        s.send(MESSAGE.encode('utf-8'))
-        s.send(mensagem.encode('utf-8'))
-        data = s.recv(BUFFER_SIZE)
-        data_real = str(data).split()
-        print(data_real[0][2:], data_real[1][:6])
-        break
-    elif opcao == '4':
-        s.connect((TCP_IP, TCP_PORT))
-        s.send(MESSAGE.encode('utf-8'))
-        s.send(mensagem.encode('utf-8'))
-        data = s.recv(BUFFER_SIZE)
-        data_real = str(data).split()
-        print(data_real[0][2:], data_real[1][:6])
-        break
-    elif opcao == '5':
-        s.connect((TCP_IP, TCP_PORT))
-        temp = input('Digite a temperatura desejada: ')
-        mensagem = [opcao,temp]
-        s.send(MESSAGE.encode('utf-8'))
-        s.send(mensagem[0].encode('utf-8'))
         s.send(mensagem[1].encode('utf-8'))
-
-        break
+    elif opcao == '3':
+        s.sendall(MESSAGE.encode('utf-8'))
+        s.sendall(mensagem.encode('utf-8'))
+        data = s.recv(BUFFER_SIZE)
+        data_real = str(data).split()
+        print(data_real[0][2:], data_real[1][:6])
+    elif opcao == '4':
+        s.sendall(MESSAGE.encode('utf-8'))
+        s.sendall(mensagem[0].encode('utf-8'))
+        data = s.recv(BUFFER_SIZE)
+        data_real = str(data).split()
+        print(data_real[0][2:], data_real[1][:6])
+    elif opcao == '5':
+        temp = input('Digite a temperatura desejada: ')
+        #s.sendall(MESSAGE.encode('utf-8'))
+        mensagem = [opcao,temp]
+        #s.sendall(mensagem[0].encode('utf-8'))
+        s.sendall(mensagem[1].encode('utf-8'))
+        print('teste')
     else:
         print('Saindo...')
         break
 
-    s.close()
+s.close()
