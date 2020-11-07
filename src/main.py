@@ -40,30 +40,30 @@ while(1):
         escolha = input('Escolha um dispositivo: ')
         mensagem = [opcao,escolha]
         s.connect((TCP_IP, TCP_PORT))
-        s.send(MESSAGE)
-        s.send(mensagem)
+        s.sendall(MESSAGE.encode('utf-8'))
+        s.sendall(mensagem.encode('utf-8'))
         break
     elif opcao == '2':
         print_dispositivos()
         escolha = input('Escolha um dispositivo: ')
         mensagem = [opcao,escolha]
         s.connect((TCP_IP, TCP_PORT))
-        s.send(MESSAGE)
-        s.send(mensagem)
+        s.send(MESSAGE.encode('utf-8'))
+        s.send(mensagem.encode('utf-8'))
         break
     elif opcao == '3':
         s.connect((TCP_IP, TCP_PORT))
+        s.send(MESSAGE.encode('utf-8'))
+        s.send(mensagem.encode('utf-8'))
         data = s.recv(BUFFER_SIZE)
-        ##s.send(MESSAGE)
-        ##s.send(mensagem)
         data_real = str(data).split()
         print(data_real[0][2:], data_real[1][:6])
         break
     elif opcao == '4':
         s.connect((TCP_IP, TCP_PORT))
+        s.send(MESSAGE.encode('utf-8'))
+        s.send(mensagem.encode('utf-8'))
         data = s.recv(BUFFER_SIZE)
-        #s.send(MESSAGE)
-        #s.send(mensagem)
         data_real = str(data).split()
         print(data_real[0][2:], data_real[1][:6])
         break
@@ -71,8 +71,8 @@ while(1):
         s.connect((TCP_IP, TCP_PORT))
         temp = input('Digite a temperatura desejada: ')
         mensagem = [opcao,temperatura]
-        s.send(MESSAGE)
-        s.send(mensagem)
+        s.send(MESSAGE.encode('utf-8'))
+        s.send(mensagem.encode('utf-8'))
         break
     else:
         print('Saindo...')
