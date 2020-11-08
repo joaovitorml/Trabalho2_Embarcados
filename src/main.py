@@ -29,7 +29,7 @@ while(1):
     print('1- Ligar um dispositivo')
     print('2- Desligar um dispositivo')
     print('3- Checar sensores')
-    print('4- Checar tempratura e umidade')
+    print('4- Checar temperatura e umidade')
     print('5- Escolher temperatura')
     opcao = input('Escolha uma das opções: ')
 
