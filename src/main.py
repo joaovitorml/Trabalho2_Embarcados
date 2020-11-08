@@ -61,12 +61,13 @@ while(1):
         s.sendall(opcao.encode('utf-8'))
         data = s.recv(BUFFER_SIZE)
         data_real = str(data).split()
+        print('\nTemperatura e Umidade:')
         print(data_real[0][2:], data_real[1][:6])
+        print('\n')
     elif opcao == '5':
         s.sendall(opcao.encode('utf-8'))
         temp = input('Digite a temperatura desejada: ')
         s.sendall(temp.encode('utf-8'))
-        print('teste')
     else:
         print('Saindo...')
         break
