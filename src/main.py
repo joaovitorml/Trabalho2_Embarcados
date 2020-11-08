@@ -47,13 +47,11 @@ while(1):
         s.sendall(opcao.encode('utf-8'))
         print_dispositivos()
         escolha = input('Escolha um dispositivo: ')
-        s.connect((TCP_IP, TCP_PORT))
         s.sendall(escolha.encode('utf-8'))
     elif opcao == '2':
         s.sendall(opcao.encode('utf-8'))
         print_dispositivos()
         escolha = input('Escolha um dispositivo: ')
-        s.connect((TCP_IP, TCP_PORT))
         s.sendall(escolha.encode('utf-8'))
     elif opcao == '3':
         s.sendall(opcao.encode('utf-8'))
