@@ -6,7 +6,6 @@ import sys
 TCP_IP = '192.168.0.52'
 TCP_PORT = 5000
 BUFFER_SIZE = 30
-MESSAGE = 'teste'
 
 def print_dispositivos():
     print('1- L1')
@@ -57,13 +56,11 @@ while(1):
         s.sendall(escolha.encode('utf-8'))
     elif opcao == '3':
         s.sendall(opcao.encode('utf-8'))
-        s.sendall(MESSAGE.encode('utf-8'))
         data = s.recv(BUFFER_SIZE)
         data_real = str(data).split()
         print(data_real[0][2:], data_real[1][:6])
     elif opcao == '4':
         s.sendall(opcao.encode('utf-8'))
-        s.sendall(MESSAGE.encode('utf-8'))
         data = s.recv(BUFFER_SIZE)
         data_real = str(data).split()
         print(data_real[0][2:], data_real[1][:6])
